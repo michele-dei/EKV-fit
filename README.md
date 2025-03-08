@@ -51,18 +51,18 @@ import mos_extract_ekv as ekv
 
 # Define the input file and parameters
 filename = 'data.csv'  # Path to your CSV file
-temperature = 27  # Temperature in Celsius
-pair_index = 0  # Index of the voltage-current pair to extract
 
 # Perform the fitting
-VTH, IS, n, VL, VH, IL, IH, iteration, err, status = ekv.fit_data(
-    filename, temperature, pair_index, max_iter=100, error_margin=0.01, 
-    quality_margin=0.05, fit_range_parameter=1.1, plot_fit=True, verbose=True
-)
+fitter = ekv.Fitter(filename='data.csv', 
+                    temperature=27,  # Temperature in Celsius
+                    fit_range_parameter=1.2
+                    # key parameter for controlling the range of fitting
+                   )
 
-# Print the results
-print(f"Fitted Parameters: VTH = {VTH} V, IS = {IS} A, n = {n}")
-print(f"Fit Quality: VL = {VL} V, VH = {VH} V, IL = {IL} A, IH = {IH} A")
+# Print the (main) results
+print(f"VTH: {fitter.VTH_cf:.3f} V")
+print(f"IS: {fitter.IS_cf:.3e} A")
+print(f"n: {fitter.n_cf:.3f}")
 ```
 
 ### Input Data Format
@@ -98,5 +98,5 @@ Virtanen, P.; et al. SciPy 1.0: Fundamental algorithms for scientific computing 
 For questions or feedback, please contact:
 - **Michele Dei**  
   Email: michele.dei@unipi.it  
-  GitHub: [yourusername](https://github.com/michele-dei)
+  GitHub: [https://github.com/michele-dei]
 ```
