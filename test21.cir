@@ -1,0 +1,36 @@
+* Test Circuit for NMOS Transistor
+
+* Include the model file
+.include "sky130_fd_pr_nfet_01v8_tt_nominal_bsim4.spice"
+
+.probe all
+
+* Instance of the NMOS transistor
+M1 drain gate source body sky130_fd_pr__nfet_01v8__model.32 l=0.5u w=2u
+
+* Voltage sources
+* 	Power supply
+Vdd drain 0 1.2  
+* 	Gate voltage (DC sweep)
+Vgate gate 0 DC 0.0
+* 	Body voltage 
+Vbody body 0 DC 0.0
+* 	Source voltage 
+Vsource source 0 DC 0.0
+
+* DC Sweep Analysis
+* 	Sweep Vgate from 0V to 1.8V in 10mV steps
+.dc Vgate 0 1.2 0.01  
+
+* Output definitions
+.control
+	run
+	
+	* Create CSV file headings
+	echo "VG [V], ID 200/50 [A]" > test21.csv_heads
+	* Write RAW data (ASCII)
+ 	wrdata test21.raw m1:s#branch
+	quit
+.endc
+
+.end

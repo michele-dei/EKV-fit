@@ -1,0 +1,40 @@
+* Wide-Swing Cascode Mirror - DC sweep
+* run: ngpice wscm.cir
+
+* Include the model file
+.include "sky130_fd_pr_nfet_01v8_tt_nominal_bsim4.spice"
+
+*.probe all
+
+* Define the circuit
+* 	Instance of the NMOS transistors
+M1 d1 g1 0  0 sky130_fd_pr__nfet_01v8__model.31 l=1.0u w=2u
+M2 d2 g1 0  0 sky130_fd_pr__nfet_01v8__model.31 l=1.0u w=2u
+M3 g1 cc d1 0 sky130_fd_pr__nfet_01v8__model.32 l=0.5u w=2u
+M4 nn cc d2 0 sky130_fd_pr__nfet_01v8__model.32 l=0.5u w=2u
+
+* Voltage sources
+* 	Power supply
+Vcc cc 0 DC=1.3
+* 	Gate voltage (DC sweep)
+Vnn nn 0 DC=1.2
+
+* Current source Iin
+Iin 0 g1 DC=1u
+
+
+.dc Iin 0.5u 100u 10n
+
+.control
+
+  options numdgt=15
+    
+  run
+  display
+  
+  set xbrushwidth=2
+  plot g1 d1
+  
+  wrdata wscm.txt g1 d1
+  
+.endc
