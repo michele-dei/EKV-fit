@@ -57,8 +57,7 @@ def inhomgeneous_list_to_np_array(lst, sort=True):
 plt.close('all')
 directory_path = "./"
 file = "test07_40_33.csv", "test02_400_330.csv", "test01_4000_3300.csv"
-#file = "test02_400_330.csv", "test07_40_33.csv", "test01_4000_3300.csv"
-labels = 'W/L = 40 nm/33 nm', 'W/L = 400 nm/330 nm', 'W/L = 4000 nm/3300 nm'
+labels = 'W/L = 0.4 um/0.33 um', 'W/L = 4 um/3.3 um', 'W/L = 40 um/33 um'
 filename = [os.path.join(directory_path, f) for f in file]
 figsize = (4.8, 3.6)
 fit_range_pararmeter = [1.001, 1.1, 1.6]
