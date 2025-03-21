@@ -84,7 +84,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Citation
 If you use this tool in your research, please cite the following paper:
 ```
-Dei, M. Heuristic Enz-Krummenacker-Vittoz (EKV) Model Fitting for Low-Power IC Design: An Open-Source Implementation. Electronics 2025, 1, 1. https://doi.org/xxxx (Under review)
+Dei, M. Heuristic Enz–Krummenacher–Vittoz (EKV) Model Fitting for Low-Power Integrated Circuit Design: An Open-Source Implementation. Electronics 2025, 14, 1162. https://doi.org/10.3390/electronics14061162
+
 ```
 
 For the SciPy library used in this project, please cite:
@@ -97,6 +98,6 @@ Virtanen, P.; et al. SciPy 1.0: Fundamental algorithms for scientific computing 
 ## Contact
 For questions or feedback, please contact:
 - **Michele Dei**  
-  Email: michele.dei@unipi.it  
+  Email: michele.dei [at] unipi.it  
   GitHub: [https://github.com/michele-dei]
 ```
